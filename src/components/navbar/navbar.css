@@ -1,0 +1,39 @@
+.navbar-container {
+    margin: -0.5rem;
+    background-color: #ecc951;
+    height: 6.5rem;
+    position: fixed;
+    width: 100%;
+}
+
+.navbar {
+    margin: auto;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+}
+
+.navbar div {
+    display: flex;
+    align-items: center;
+}
+
+.navbar div img {
+    width: 18rem;
+    position: absolute;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 1.25rem;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    /* font-size: 1.2rem; */
+}

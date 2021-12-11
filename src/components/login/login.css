@@ -1,0 +1,76 @@
+.container-login{
+    background: url(../../resources/img/uptc.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+    margin: -0.5rem;
+}
+
+
+.box-login {
+    width: 19rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+
+}
+
+.box-login h1 {
+    font-size: 2.5rem;
+    border-bottom: 6px solid #ffcc00;
+    margin-bottom: 3rem;
+    padding-bottom: 0.8rem;
+    color: white;
+}
+
+.box-text {
+    overflow: hidden;
+    padding: 0.8rem 0;
+    margin: 0.8rem 0;
+    border-bottom: 1px solid #ffcc00;
+}
+
+.box-text input {
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 1.2rem;
+    float: left;
+    margin: 0 0.4rem;    
+}
+
+.box-text input::placeholder {
+    color: white;
+    background: none;
+}
+
+.btn {
+    width: 100%;
+    background: none;
+    border: 2px solid #ffcc00;
+    color: white;
+    padding: 0.35rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 1.2rem 0;
+}
+
+.btn:hover {
+    background: #ffcc00;
+    color: black;
+}
+
+.box-login form a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin-top: 1.2rem;
+}
