@@ -68,12 +68,16 @@ const Navbar = () => {
                                     <li className={'navbar-item'}>
                                         <a href={'/admin/products'}>Productos</a>
                                     </li>
+                                    <li className={'navbar-item'}>
+                                        <button onClick={closeSession}>Salir</button>
+                                    </li>
                                 </>
                                 :
                                 <>
                                     <li className={''}>
                                         <a className={''} href="./login">Iniciar Sesion</a>
                                     </li>
+
 
                                 </>
                     }

@@ -1,6 +1,14 @@
 .footer-container {
-    background-color: #bea8a8;
+    border-top: 3rem solid #e5e5e5;
+    background: url(../../resources/img/uptc_footer2.jpg) no-repeat center center;
+    background-size: cover;
     text-align: center;
     margin: -0.5rem;
     margin-top: 0;
+    margin-bottom: -1rem;
+    color: #fff;
+}
+
+.footer-menu li a{
+    color: #fff;
 }

@@ -4,12 +4,13 @@
     height: 6.5rem;
     position: fixed;
     width: 100%;
+    z-index: 1;
 }
 
 .navbar {
-    margin: auto;
+    /* margin: auto; */
     display: flex;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color:black;
     align-items: center;
     justify-content: space-between;
     height: 4rem;

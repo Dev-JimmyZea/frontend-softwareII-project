@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 // import imgHeader from '../../resources/img/cabecera.PNG';
 import './login.css';
+import Swal from 'sweetalert2'
+
 
 const SignIn = () => {
 
@@ -47,25 +49,57 @@ const SignIn = () => {
         console.log(user);
 
         send('http://localhost:4000/user/login', user, 'POST').then(data => {
-            console.log(data);
-            const { token, user } = data;
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(user));
-            if (user.role === 'SUPERADMIN') {
-                alert('Bienvenido Super Admin');
-                window.location.href = '/';
-            } else if (user.role === 'ADMIN') {
-                alert('Bienvenido Admin');
-                window.location.href = '/admin';
-            } else if (user.role === 'STUDENT') {
-                alert('Bienvenido Estudiante');
-                window.location.href = '/user';
-            } else {
-                window.location.href = '/';
+            if (data.message === 'User logged in successfully') {
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Bienvenido',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                const { token, user } = data;
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
+                if (user.role === 'SUPERADMIN') {
+                    window.location.href = '/';
+                } else if (user.role === 'ADMIN') {
+                    window.location.href = '/admin';
+                } else if (user.role === 'STUDENT') {
+                    window.location.href = '/user';
+                } else {
+                    window.location.href = '/';
+                }
+            }else if(data.message === 'User not found'){
+                Swal.fire({
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Correo electronico no registrado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }else if(data.message === 'Invalid password'){
+                Swal.fire({
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Contraseña incorrecta',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
 
 
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            
+            console.log(err);
+
+            Swal.fire({
+                position: 'top',
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        });
 
     }
 

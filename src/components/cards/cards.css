@@ -1,0 +1,20 @@
+.card-container {
+    /* background-color: red; */
+}
+
+.content-card {
+    margin: 0.5rem;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.5rem;
+}
+
+.content-image img{
+    width: 100%;
+    height: auto;
+}
+
+.content-card .content-card-button{
+    text-align: center;
+}
