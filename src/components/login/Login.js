@@ -1,32 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import imgHeader from '../../resources/img/cabecera.PNG';
 import './login.css';
 import Swal from 'sweetalert2'
 
 
-const SignIn = () => {
+const Login = () => {
 
     const [user, setUser] = useState({
         email: '',
         password: ''
     });
-
-    useEffect(() => {
-        send('http://localhost:4000/user', {
-
-            userId: '00',
-            email: 'super.admin@uptc.edu.co',
-            password: '123456',
-            name: 'Super',
-            lastName: 'Admin',
-            role: 'SUPERADMIN',
-            gender: 'M'
-
-        }, 'POST')
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-
-    }, []);
 
     const send = async (url, data, meth) => {
         const response = await fetch(url, {
@@ -46,30 +29,31 @@ const SignIn = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(user);
-
         send('http://localhost:4000/user/login', user, 'POST').then(data => {
             if (data.message === 'User logged in successfully') {
+
                 Swal.fire({
                     position: 'top',
                     icon: 'success',
                     title: 'Bienvenido',
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1000
                 })
-                const { token, user } = data;
-                localStorage.setItem('token', token);
-                localStorage.setItem('user', JSON.stringify(user));
-                if (user.role === 'SUPERADMIN') {
-                    window.location.href = '/';
-                } else if (user.role === 'ADMIN') {
-                    window.location.href = '/admin';
-                } else if (user.role === 'STUDENT') {
-                    window.location.href = '/user';
-                } else {
-                    window.location.href = '/';
-                }
-            }else if(data.message === 'User not found'){
+
+                setTimeout(() => {
+                    const { token, data:user } = data;
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(user));
+                    if (user.role === 'SUPERADMIN') {
+                        window.location.href = '/';
+                    } else if (user.role === 'ADMIN') {
+                        window.location.href = '/admin';
+                    } else if (user.role === 'STUDENT') {
+                        window.location.href = '/user';
+                    }
+                }, 1000);
+
+            } else if (data.message === 'User not found') {
                 Swal.fire({
                     position: 'top',
                     icon: 'error',
@@ -77,7 +61,7 @@ const SignIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-            }else if(data.message === 'Invalid password'){
+            } else if (data.message === 'Invalid password') {
                 Swal.fire({
                     position: 'top',
                     icon: 'error',
@@ -88,9 +72,7 @@ const SignIn = () => {
             }
 
 
-        }).catch(err => {
-            
-            console.log(err);
+        }).catch(() => {
 
             Swal.fire({
                 position: 'top',
@@ -137,4 +119,4 @@ const SignIn = () => {
     )
 }
 
-export default SignIn;
+export default Login;
