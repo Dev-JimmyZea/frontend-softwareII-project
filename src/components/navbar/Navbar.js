@@ -8,7 +8,7 @@ const Navbar = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const closeSession = () => {
         localStorage.clear();
-        window.location.href = '/login';
+        window.location.href = '/';
         setShow(0);
     }
 
@@ -19,6 +19,8 @@ const Navbar = () => {
                 setShow(1);
             } else if (user.role === 'ADMIN') {
                 setShow(2);
+            } else {
+                setShow(3);
             }
         }
 
@@ -72,14 +74,25 @@ const Navbar = () => {
                                         <button onClick={closeSession}>Salir</button>
                                     </li>
                                 </>
-                                :
-                                <>
-                                    <li className={''}>
-                                        <a className={''} href="./login">Iniciar Sesion</a>
-                                    </li>
+                                : show === 3 ?
+                                    <>
+                                        <li className={'navbar-item'}>
+                                            <a href={'/'}>Estudiante</a>
+                                        </li>
+                                        <li className={'navbar-item'}>
+                                            <a href={'/'}>Notificaciones</a>
+                                        </li>
+                                        <li className={'navbar-item'}>
+                                            <button onClick={closeSession}>Salir</button>
+                                        </li>
+                                    </>
+                                    :
+                                    <>
+                                        <li className={''}>
+                                            <a className={''} href="./login">Iniciar Sesion</a>
+                                        </li>
+                                    </>
 
-
-                                </>
                     }
                 </ul>
             </div>
