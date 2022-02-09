@@ -4,11 +4,9 @@ const Aside = () => {
 
     return (
         <div className={'aside-container'}>  
-            <button >SuperAdministrador</button>
-            <button>Administrativos</button>
-            <button>Graduados</button>
-            <button>Estudiantes</button>
-
+            <button >Noticias</button>
+            <button>Foro</button>
+            <button>Trabajos</button>
         </div>
     )
 }
