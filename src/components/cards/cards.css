@@ -1,13 +1,20 @@
-.card-container {
-    /* background-color: red; */
-}
-
 .content-card {
     margin: 0.5rem;
     border: 1px solid #ccc;
     padding: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.75);
     border-radius: 0.5rem;
+    height: 20rem;
+}
+
+.content-card:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.5s;    
+}
+
+.content-image {
+    height: 10rem;
 }
 
 .content-image img{
@@ -15,6 +22,58 @@
     height: auto;
 }
 
+@supports (object-fit: cover) {
+    .content-image img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+
+    }
+}
+
 .content-card .content-card-button{
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-card .content-card-button button{
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 70%;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.content-card .content-card-button button:hover{
+    background-color: rgb(173, 139, 25);
+    color: black;
+    border-color: #ecc951;
+    height: 1.9rem;
+    font-size: 1.1rem;
+    transition: all 0.4s;
+}
+
+.content-card .content-card-text {
+    height: 5rem;
+    margin-top: 1.3rem;
+}
+
+.content-card .content-card-text p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    margin: 0.5rem;
+}
+
+.content-card .content-card-date {
+    font-size: 0.8rem;
+    color: #80640b;
+    font-weight: bold;    
     text-align: center;
+    margin-bottom: 0.5rem;
 }
