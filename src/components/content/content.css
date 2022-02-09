@@ -1,5 +1,5 @@
 .content-container {
-    width: calc(75% + 0.5rem);
+    width: calc(80% + 0.5rem);
     margin-top: 6rem;
 }
 
@@ -7,8 +7,16 @@
     padding: 2rem 1rem;
     margin: 5rem;
     background-color: rgba(0, 0, 0, 0.8);
-    
+    border-radius: 0.5rem;
 }
+
+.content-container .content-cards .main-title{
+    font-size: 2rem;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
 
 .content-container h1 {
     font-size: 2rem;
