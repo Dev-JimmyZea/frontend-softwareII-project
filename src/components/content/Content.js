@@ -1,14 +1,39 @@
 import Cards from '../cards/Cards';
 import './content.css'
 import Slider from 'react-slick';
+import { useEffect, useState } from 'react';
 
+export default function Content () {
 
-const Content = () => {
+    const URL = 'http://localhost:4000/news';
+    const [news, setNews] = useState([]);
+
+    const handleClick = (id) => {
+        console.log(id);
+        if(localStorage.getItem('token') === null){
+            console.log('No estas logeado');
+            window.location.href = '/login';
+
+        }else{
+            window.location.href = `/news/${id}`;
+            console.log('Estas logeado');
+        }
+    }
+
+    useEffect(() => {
+        fetch(URL)
+            .then(response => response.json())
+            .then(data => {
+                setNews(data.data);
+            })
+            .catch(error => console.log(error));    
+        }, []);
+
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
         cssEase: 'linear',
         responsive: [
@@ -35,19 +60,27 @@ const Content = () => {
             },
         ],
     };
+
     return (
         <div className={'content-container'}>
             <div className={'content-cards'}>
-                <Slider {...settings}>
-                    <Cards title={'Noticia numero 1'} description={'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. labore, quibusdam.'} />
-                    <Cards title={'Noticia numero 2'} description={'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. labore, quibusdam.'} />
-                    <Cards title={'Noticia numero 3'} description={'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. labore, quibusdam.'} />
-                    <Cards title={'Noticia numero 4'} description={'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem. labore, quibusdam.'} />
+                <h1 className={'main-title'}>Noticias</h1>
+                <Slider {...settings} id={'slider'}>
+                    {news.map(news => (
+                        <Cards
+                            key={news.code}
+                            code={news.code}
+                            title={news.title}
+                            content={news.content}
+                            created_at={news.created_at.substring(0, 10)}
+                            handleClick={handleClick}
+                            image={news.image}
+                            isNews={true}
+                        />
+                    ))}
+
                 </Slider>
             </div>
-
         </div>
     )
 }
-
-export default Content
