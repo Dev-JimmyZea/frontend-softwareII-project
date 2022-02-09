@@ -1,19 +1,20 @@
 import './cards.css';
-import image from '../../resources/img/cabecera.png';
 
 const Cards = (props) => {
     return <>
-        <div className={'card-container'} >
-            <div className={'content-card'}>
+        <div className={'cards-container'} >
+            <div className={'content-card'} onClick={() => props.handleClick(props.code)}>
                 <div className={'content-image'}>
-                    <img src={image} alt={'image_news'} className={'image'} />
+                    <img src={props.image} alt={'image_news'} className={'image'} />
                 </div>
                 <div className={'content-card-text'}>
-                    <h1 >{props.title}</h1>
-                    <p>{props.description}</p>
+                    <p>{props.content}</p>
+                </div>
+                <div className={'content-card-date'}>
+                    <span>{props.created_at}</span>   
                 </div>
                 <div className={'content-card-button'}>
-                    <button className={'button-card'}>Ver mas</button>
+                    <button className={'button-card'} >Ver más</button>
                 </div>
 
             </div>
