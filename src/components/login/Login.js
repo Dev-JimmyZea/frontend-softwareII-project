@@ -29,7 +29,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        send('http://localhost:4000/user/login', user, 'POST').then(data => {
+        send(`${process.env.REACT_APP_URL_BACKEND}user/login`, user, 'POST').then(data => {
             if (data.message === 'User logged in successfully') {
 
                 Swal.fire({
@@ -44,13 +44,7 @@ const Login = () => {
                     const { token, data:user } = data;
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
-                    if (user.role === 'SUPERADMIN') {
-                        window.location.href = '/';
-                    } else if (user.role === 'ADMIN') {
-                        window.location.href = '/admin';
-                    } else if (user.role === 'STUDENT') {
-                        window.location.href = '/user';
-                    }
+                    window.location.href = '/';
                 }, 1000);
 
             } else if (data.message === 'User not found') {
