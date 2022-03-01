@@ -4,9 +4,9 @@ const Aside = () => {
 
     return (
         <div className={'aside-container'}>  
-            <button >Noticias</button>
-            <button>Foro</button>
-            <button>Trabajos</button>
+            <a href='/' >Noticias</a>
+            <a href='/forum'>Foros</a>
+            <a href='/work'>Trabajos</a>
         </div>
     )
 }
