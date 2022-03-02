@@ -8,19 +8,7 @@ export default function Content({ isNews }) {
     const [news, setNews] = useState([]);
     const [work, setWork] = useState([]);
 
-    const handleClick = (id) => {
-        if (localStorage.getItem('token') === null) {
-            console.log('No estas logeado');
-            window.location.href = '/login';
-
-        } else {
-            window.location.href = isNews ? `/news/${id}` : `/work/${id}`;
-            console.log('Estas logeado');
-        }
-    }
-
     useEffect(() => {
-        console.log(process.env);
         isNews ?
             fetch(`${process.env.REACT_APP_URL_BACKEND}news`)
                 .then(res => res.json())
@@ -79,8 +67,8 @@ export default function Content({ isNews }) {
                                     title={news.title}
                                     content={news.content}
                                     created_at={news.created_at.substring(0, 10)}
-                                    handleClick={handleClick}
-                                    image={news.image}
+                                    image={news.images[0]}
+                                    site={'news'}
                                 />
                             ))
                             :
@@ -91,8 +79,8 @@ export default function Content({ isNews }) {
                                     title={work.title}
                                     content={work.description}
                                     created_at={work.created_at.substring(0, 10)}
-                                    handleClick={handleClick}
-                                    image={work.image}
+                                    image={work.images[0]}
+                                    site={'work'}
                                 />
                             ))
                     }
