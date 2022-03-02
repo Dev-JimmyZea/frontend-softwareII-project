@@ -43,21 +43,21 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     font-size: 1.05rem;
     vertical-align: top;
-
 }
 
 .forum-table tbody tr td{
     padding: 0.5rem;
+    padding-top: 2rem;
 }
 
-.forum-table tbody tr td button{
+.forum-table tbody tr td a{
     color: rgb(49, 49, 136);
     background: none;
     border: none;
-    font-size: 1.02rem;
+    text-decoration: none;
 }
 
-.forum-table tbody tr td button:hover{
+.forum-table tbody tr td a:hover{
     color: rgb(63, 122, 107);
 }
 
