@@ -32,21 +32,15 @@ const Navbar = () => {
                 <div className={'logo'}>
                     <img src={Logo} alt={'logo'} />
                 </div>
-                <ul className={''}>
+                <ul className={'items-navbar'}>
                     {
                         show === 1 ?
                             <>
                                 <li className={'navbar-item'}>
-                                    <a href={'/'}>Superadmin</a>
+                                    <span>Bienvenid@ {user.name} {user.lastName}</span>
                                 </li>
                                 <li className={'navbar-item'}>
-                                    <a href={'/admin'}>Administración</a>
-                                </li>
-                                <li className={'navbar-item'}>
-                                    <a href={'/admin/users'}>Usuarios</a>
-                                </li>
-                                <li className={'navbar-item'}>
-                                    <a href={'/admin/categories'}>Categorías</a>
+                                    <a href={'/superadmin-users'}>Usuarios</a>
                                 </li>
                                 <li className={'navbar-item'}>
                                     <button onClick={closeSession}>Salir</button>
@@ -56,19 +50,16 @@ const Navbar = () => {
                             : show === 2 ?
                                 <>
                                     <li className={'navbar-item'}>
-                                        <a href={'/'}>Admin</a>
+                                        <span>Bienvenid@ {user.name} {user.lastName}</span>
                                     </li>
                                     <li className={'navbar-item'}>
-                                        <a href={'/admin'}>Administración</a>
+                                        <a href={'/admin-careers'}>Carreras</a>
                                     </li>
                                     <li className={'navbar-item'}>
-                                        <a href={'/admin/users'}>Usuarios</a>
+                                        <a href={'/admin-works'}>Trabajos</a>
                                     </li>
                                     <li className={'navbar-item'}>
-                                        <a href={'/admin/categories'}>Categorías</a>
-                                    </li>
-                                    <li className={'navbar-item'}>
-                                        <a href={'/admin/products'}>Productos</a>
+                                        <a href={'/admin-news'}>Noticias</a>
                                     </li>
                                     <li className={'navbar-item'}>
                                         <button onClick={closeSession}>Salir</button>
@@ -77,10 +68,13 @@ const Navbar = () => {
                                 : show === 3 ?
                                     <>
                                         <li className={'navbar-item'}>
-                                            <a href={'/'}>Estudiante</a>
+                                            <span>Bienvenido@ {user.name} {user.lastName}</span>
                                         </li>
                                         <li className={'navbar-item'}>
-                                            <a href={'/'}>Notificaciones</a>
+                                            <a href={'/student-notification'}>Notificaciones</a>
+                                        </li>
+                                        <li className={'navbar-item'}>
+                                            <a href={'/student-profile'}>Perfil</a>
                                         </li>
                                         <li className={'navbar-item'}>
                                             <button onClick={closeSession}>Salir</button>
@@ -88,8 +82,8 @@ const Navbar = () => {
                                     </>
                                     :
                                     <>
-                                        <li className={''}>
-                                            <a className={''} href="./login">Iniciar Sesion</a>
+                                        <li className={'navbar-item'}>
+                                            <a href="./login">Iniciar Sesion</a>
                                         </li>
                                     </>
 
