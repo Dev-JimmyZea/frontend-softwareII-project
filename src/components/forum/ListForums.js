@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import "./forum.css"
 
-const Forum = () => {
+const ListForum = () => {
 
   const [forums, setForums] = useState([]);
 
@@ -11,17 +11,6 @@ const Forum = () => {
       .then(data => setForums(data.data))
       .catch(err => console.log(err))
   }, [])
-
-  const handleClick = (id) => {
-    if (localStorage.getItem('token') === null) {
-      console.log('No estas logeado');
-      window.location.href = '/login';
-    } else {
-      window.location.href = `/forum/${id}`;
-      console.log('Estas logeado');
-    }
-  }
-
 
   return (
     <div className="forum-container">
@@ -43,7 +32,7 @@ const Forum = () => {
             <tbody>
               {forums.map(forum => (
                 <tr key={forum.code}>
-                  <td><button onClick={() => handleClick(forum.code)}>{forum.title}</button></td>
+                  <td><a href={`./forum/${forum.code}`}>{forum.title}</a></td>
                   <td>{forum.topic}</td>
                   <td>
                     {
@@ -53,8 +42,6 @@ const Forum = () => {
                           <img key={index} src={image} alt="" className="forum-image" />
                         ))}
                       </div>
-
-
                       :
                       null
                     }
@@ -73,4 +60,4 @@ const Forum = () => {
   )
 }
 
-export default Forum
+export default ListForum
