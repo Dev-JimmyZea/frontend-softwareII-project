@@ -19,7 +19,7 @@ const ValidateUser = ({ children }) => {
             setShowChild(true);
         } else {
             setTimeout(() => {
-                history.push('/login');
+                history('/login');
             }, 500);
         }
 
