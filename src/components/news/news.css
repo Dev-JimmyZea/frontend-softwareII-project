@@ -1,0 +1,9 @@
+.container-news {
+    background-color: rgb(241, 235, 214);
+    margin: 1.5rem;
+    margin-top: 6.5rem;
+    height: calc(100vh - 6.5rem);
+    width: calc(100vw - 5rem);
+    display: inline-block;
+    border-radius: 1rem;
+}
