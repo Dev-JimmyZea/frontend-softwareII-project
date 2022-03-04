@@ -4,30 +4,29 @@ import PropTypes from 'prop-types';
 
 export const UserContext = createContext('user-context');
 
-const ValidateUser = ({ children }) => {
-    const history = useNavigate();
-
+const ValidateUser = ({ children, role }) => {
+    const navigate = useNavigate();
     const [user, setUser] = useState();
     const [showChild, setShowChild] = useState(false);
 
     useEffect(() => {
         const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-
-        if (user && token) {
+        const expired = token ? JSON.parse(atob(token.split('.')[1])).exp < Date.now() / 1000 : false;
+        if (user && token && !expired && user.role === role) {
             setUser(JSON.parse(user));
             setShowChild(true);
+        } else if (user && token && !expired && user.role !== role) {
+            navigate('../');
         } else {
-            setTimeout(() => {
-                history('/login');
-            }, 500);
+            navigate('../login');
         }
 
         return () => {
             setUser(null);
         }
 
-    }, [history]);
+    }, [navigate, role]);
 
     if (showChild) {
         return (
