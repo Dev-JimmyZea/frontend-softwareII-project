@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-// import imgHeader from '../../resources/img/cabecera.PNG';
 import './login.css';
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
+const Login = ({pathname}) => {
 
-const Login = () => {
+    const navigate = useNavigate();
 
     const [user, setUser] = useState({
         email: '',
@@ -44,7 +45,7 @@ const Login = () => {
                     const { token, data:user } = data;
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
-                    window.location.href = '/';
+                    navigate(pathname === '/login' ? '/' : pathname);
                 }, 1000);
 
             } else if (data.message === 'User not found') {
