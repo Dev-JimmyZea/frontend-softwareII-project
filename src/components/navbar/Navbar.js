@@ -13,7 +13,12 @@ const Navbar = () => {
     }
 
     useEffect(() => {
-        if (user) {
+        const token = localStorage.getItem('token');
+        const expired = token ? JSON.parse(atob(token.split('.')[1])).exp < Date.now() / 1000 : false;
+        let user = localStorage.getItem('user');
+
+        if (user && token && !expired) {
+            user = JSON.parse(user);
 
             if (user.role === 'SUPERADMIN') {
                 setShow(1);
@@ -22,9 +27,12 @@ const Navbar = () => {
             } else {
                 setShow(3);
             }
-        }
 
-    }, [user]);
+        } else {
+            setShow(0);
+        }
+    }, [])
+
 
     return (
         <div className={'navbar-container'}>
@@ -37,7 +45,7 @@ const Navbar = () => {
                         show === 1 ?
                             <>
                                 <li className={'navbar-item'}>
-                                    <span>Bienvenid@ {user.name} {user.lastName}</span>
+                                    <a href={'/'}>Bienvenid@ {user.name} {user.lastName}</a>
                                 </li>
                                 <li className={'navbar-item'}>
                                     <a href={'/superadmin-users'}>Usuarios</a>
@@ -50,7 +58,7 @@ const Navbar = () => {
                             : show === 2 ?
                                 <>
                                     <li className={'navbar-item'}>
-                                        <span>Bienvenid@ {user.name} {user.lastName}</span>
+                                        <a href={'/'}>Bienvenid@ {user.name} {user.lastName}</a>
                                     </li>
                                     <li className={'navbar-item'}>
                                         <a href={'/admin-careers'}>Carreras</a>
@@ -68,7 +76,7 @@ const Navbar = () => {
                                 : show === 3 ?
                                     <>
                                         <li className={'navbar-item'}>
-                                            <span>Bienvenido@ {user.name} {user.lastName}</span>
+                                            <a href={'/'}>Bienvenido@ {user.name} {user.lastName}</a>
                                         </li>
                                         <li className={'navbar-item'}>
                                             <a href={'/student-notification'}>Notificaciones</a>

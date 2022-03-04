@@ -38,7 +38,7 @@
     color: white;
 }
 
-.navbar .items-navbar .navbar-item span {
+.navbar .items-navbar .navbar-item:first-child {
     color: white;
     font-size: 1.13rem;
     font-weight: bold;
