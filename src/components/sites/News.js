@@ -1,14 +1,17 @@
 import Navbar from "../navbar/Navbar"
 import Footer from "../footer/Footer"
 import NewsComponent from "../news/News"
+import ValidateUser from "../login/UserVerification"
 
 
 const News = () => {
     return (
         <>
-            <Navbar />
-            <NewsComponent />
-            <Footer />
+            <ValidateUser>
+                <Navbar />
+                <NewsComponent />
+                <Footer />
+            </ValidateUser>
         </>)
 }
 
