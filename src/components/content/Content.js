@@ -64,23 +64,24 @@ export default function Content({ isNews }) {
                                 <Cards
                                     key={news.code}
                                     code={news.code}
-                                    title={news.title}
                                     content={news.content}
                                     created_at={news.created_at.substring(0, 10)}
-                                    image={news.images[0]}
+                                    image={news.image}
                                     site={'news'}
                                 />
                             ))
                             :
-                            work.map(work => (
+                            work && work.map(work => (
                                 <Cards
                                     key={work.code}
                                     code={work.code}
-                                    title={work.title}
+                                    title={work.charge}
                                     content={work.description}
                                     created_at={work.created_at.substring(0, 10)}
                                     image={work.images[0]}
                                     site={'work'}
+                                    salary={`Salario base: $${work.base_salary} millones`}
+
                                 />
                             ))
                     }
