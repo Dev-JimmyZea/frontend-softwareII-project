@@ -4,7 +4,8 @@
     padding: 0.5rem;
     background-color: rgba(255, 255, 255, 0.75);
     border-radius: 0.5rem;
-    height: 20rem;
+    max-height: 22rem;
+    min-height: 18rem;
     color: #000;
 }
 
@@ -15,12 +16,13 @@
 }
 
 .content-image {
-    height: 10rem;
+    height: 9.5rem;
 }
 
 .content-image img{
     width: 100%;
     height: auto;
+    border-radius: 0.5rem;
 }
 
 @supports (object-fit: cover) {
@@ -58,8 +60,9 @@
 }
 
 .content-card .content-card-text {
-    height: 5rem;
-    margin-top: 1.3rem;
+    max-height: 5rem;
+    min-height: 4rem;
+    margin-bottom: 1rem;
 }
 
 .content-card .content-card-text p {
@@ -71,12 +74,35 @@
     margin: 0.5rem;
 }
 
-.content-card .content-card-date {
+.content-card .content-card-info {
+    text-align: center;
+}
+
+.content-card .card-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.content-card .card-title p{
+    margin: 0;
+    margin-bottom: 0.35rem;
+}
+
+.content-card .content-card-info span:last-child{
     font-size: 0.8rem;
-    color: #80640b;
+    color: #66510b;
     font-weight: bold;    
     text-align: center;
-    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.content-card .content-card-info span:first-child{
+    /* background-color: rgb(146, 144, 39); */
+    font-weight: bold;
+    display: block;
+    border-radius: 3rem;
+    margin-bottom: 0.4rem;
 }
 
 .cards-container a{
