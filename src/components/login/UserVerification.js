@@ -6,31 +6,37 @@ export const UserContext = createContext('user-context');
 
 const ValidateUser = ({ children, role }) => {
     const navigate = useNavigate();
-    const [user, setUser] = useState();
     const [showChild, setShowChild] = useState(false);
 
     useEffect(() => {
-        const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         const expired = token ? JSON.parse(atob(token.split('.')[1])).exp < Date.now() / 1000 : false;
-        if (user && token && !expired && user.role === role) {
-            setUser(JSON.parse(user));
-            setShowChild(true);
-        } else if (user && token && !expired && user.role !== role) {
-            navigate('../');
-        } else {
-            navigate('../login');
-        }
+        const user = localStorage.getItem('user');
 
-        return () => {
-            setUser(null);
+        if (user) {
+            const userRole = JSON.parse(user).role;
+            if (!expired && userRole === role) {
+                setShowChild(true);
+            } else if (!expired && userRole !== role) {
+                setTimeout(() => {
+                    navigate('../');
+                }, 1000);
+            } else {
+                setTimeout(() => {
+                    navigate('../login');
+                }, 1000);
+            }
+        } else {
+            setTimeout(() => {
+                navigate('../login');
+            }, 1000);
         }
 
     }, [navigate, role]);
 
     if (showChild) {
         return (
-            <UserContext.Provider value={{ user }}>
+            <UserContext.Provider value={localStorage.getItem('user')}>
                 {children}
             </UserContext.Provider>);
     } else {
