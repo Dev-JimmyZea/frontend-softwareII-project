@@ -10,7 +10,7 @@ const Footer = () => {
                         <a href="./"><img  alt="logo" /></a>
                     </div>
                     <div className={''}>
-                        <p>Copyright © 2018 <a href="./">Themefisher</a>. All Rights Reserved.</p>
+                        <p>Copyright © 2021 <a href="./">Themefisher</a>. All Rights Reserved.</p>
                     </div>
                 </div>
                 <div className={''}>
@@ -20,7 +20,8 @@ const Footer = () => {
                         <li><a href="./">Services</a></li>
                         <li><a href="./">Pricing</a></li>
                         <li><a href="./">Blog</a></li>
-                        <li><a href="./">Contact</a></li>
+                        <li><a href="https://wa.me/573219628245" target={'_blank'} rel='noreferrer'>Whatsapp</a></li>
+                        
                     </ul>
                 </div>
             </div>
