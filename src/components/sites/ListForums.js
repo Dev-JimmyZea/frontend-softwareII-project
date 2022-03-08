@@ -8,7 +8,7 @@ const ListForums = () => {
     return (
         <>
             <Navbar />
-            <div className={'body-container'}>
+            <div className={'body-container'} id={'body-container'}>
                 <Aside />
                 <ListForumsC />
             </div>
