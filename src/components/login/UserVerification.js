@@ -15,11 +15,12 @@ const ValidateUser = ({ children, role }) => {
 
         if (user) {
             const userRole = JSON.parse(user).role;
-            if (!expired && userRole === role) {
+            if (!expired && (userRole === role || role === 'ALL')) {
                 setShowChild(true);
             } else if (!expired && userRole !== role) {
                 setTimeout(() => {
                     navigate('../');
+                    window.location.reload();
                 }, 1000);
             } else {
                 setTimeout(() => {
@@ -40,7 +41,6 @@ const ValidateUser = ({ children, role }) => {
                 {children}
             </UserContext.Provider>);
     } else {
-
         return <>No tiene permisos</>;
     }
 };
