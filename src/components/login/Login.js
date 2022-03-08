@@ -46,6 +46,7 @@ const Login = ({pathname}) => {
                     localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
                     navigate(pathname === '/login' ? '/' : pathname);
+                    window.location.reload();
                 }, 1000);
 
             } else if (data.message === 'User not found') {
