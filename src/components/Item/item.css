@@ -98,22 +98,31 @@ html {
     padding: 1rem;
 }
 
-.item-container .item-features .item-features-applicants button{
+.item-container .item-features .item-features-applicants button, .link{
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 0.5rem;
     cursor: pointer;
     width: 5rem;
     color: white;
     font-size: 0.9rem;
+    display: inline-block;
+    text-decoration: none;
 }
 
-.item-container .item-features .item-features-applicants button:hover{
+.item-container .item-features .item-features-applicants button:hover, .link:hover{
     background-color: rgb(173, 139, 25);
     color: black;
     border-color: #ecc951;
     height: 1.9rem;
     font-size: 1.1rem;
     transition: all 0.4s;
+}
+
+.item-container .item-features .item-features-applicants .link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .item-container .item-features h3{

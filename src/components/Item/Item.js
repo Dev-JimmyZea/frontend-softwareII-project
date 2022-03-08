@@ -1,11 +1,13 @@
 import './item.css';
 
 const Item = (props) => {
-    console.log(props.user.role, typeof props.user);
+
     return (
         <div className="container-item">
             <div className="container-item-title">
-                <a href={'../'}>Volver</a>
+                <a href={`/${props.object === 'news' ? './' : props.object}`}>
+                    Volver
+                </a>
                 <h1>{
                     props.object === 'news' ?
                         'Noticias'
@@ -40,13 +42,23 @@ const Item = (props) => {
                                 {
                                     props.user.role === 'STUDENT' ?
                                         <>
-                                            <h3>{`Aplica hasta el ${props.valid_until && props.valid_until.substring(0, 10)} aquí`}</h3>
-                                            <button>Aplicar</button>
+                                            {
+                                                props.applicants && props.applicants.length !== 0 && props.applicants.includes(props.user._id) ?
+                                                    <>
+                                                        <h3>{`Aplica hasta el ${props.valid_until && props.valid_until.substring(0, 10)} aquí`}</h3>
+                                                        <button onClick={() => props.apply(props.user._id, true)}>Cancelar</button>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <h3>{`Aplica hasta el ${props.valid_until && props.valid_until.substring(0, 10)} aquí`}</h3>
+                                                        <button onClick={() => props.apply(props.user._id)}>Aplicar</button>
+                                                    </>
+                                            }
                                         </>
                                         :
                                         <>
                                             <h3>{'Ver aplicantes'}</h3>
-                                            <button>Ver</button>
+                                            <a className={'link'} href={'/'}>Ver</a>
                                         </>
                                 }
                             </div>
