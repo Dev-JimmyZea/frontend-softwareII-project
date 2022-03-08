@@ -78,7 +78,7 @@ export default function Content({ isNews }) {
                                     title={work.charge}
                                     content={work.description}
                                     created_at={work.created_at.substring(0, 10)}
-                                    image={work.images[0]}
+                                    image={work.image}
                                     site={'work'}
                                     salary={`Salario base: $${work.base_salary} millones`}
 
