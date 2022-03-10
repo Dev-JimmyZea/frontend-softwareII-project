@@ -1401,10 +1401,10 @@
     "fs-extra" "10.0.0"
     "p-queue" "6.6.2"
 
-"@s-ui/mono@2.21.0":
-  "integrity" "sha512-JFpYVfyBVgJ4j/ZMipHCADHHEW8h17Xh3z8QJIXO+z61v2fzSZ3c3JDIqmZRw3iGTiPws8XsU35J03PZ0sSO9w=="
-  "resolved" "https://registry.npmjs.org/@s-ui/mono/-/mono-2.21.0.tgz"
-  "version" "2.21.0"
+"@s-ui/mono@2.22.0":
+  "integrity" "sha512-nqi7iLG4Z54Xyf1dkRKqFzJWizOKbu94F630+AZcBSDg6LELSazyhEGiw+Zkq+laeoip/J8sdww/Xme3caX7SA=="
+  "resolved" "https://registry.npmjs.org/@s-ui/mono/-/mono-2.22.0.tgz"
+  "version" "2.22.0"
   dependencies:
     "@s-ui/helpers" "1"
     "commander" "6.2.1"
