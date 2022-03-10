@@ -9,22 +9,24 @@ const ListForum = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   const createForum = async (url, data, meth) => {
-    const response = await fetch(url, {
-      method: meth,
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': localStorage.getItem('token')
-      },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
-    return response.json();
 
+    const formData = new FormData()
+    for (let key in data) {
+      formData.append(key, data[key])
+    }
+
+    const config = {
+      method: meth,
+      body: formData
+    }
+
+    const res = await fetch(url, config)
+    const dataJson = await res.json()
+
+    return dataJson
   }
+
+
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_URL_BACKEND}forum`)
@@ -42,7 +44,7 @@ const ListForum = () => {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
     },
-  };
+  }
 
   const openModal = () => {
     setModalIsOpen(true)
@@ -68,7 +70,7 @@ const ListForum = () => {
         <h1>Foros</h1>
       </div>
       {
-        user && JSON.parse(user).role === 'STUDENT' &&
+        user && JSON.parse(user).role === 'STUDENT' ?
         <div className="forum-create">
           <button className="btn-create" onClick={openModal}>Nuevo Foro</button>
           <ModalCrud
@@ -77,8 +79,14 @@ const ListForum = () => {
             createForum={createForum}
             getDateNow={getDateNow}
             customStyles={customStyles}
+            messageSuccess="Forum created successfully"
+            messageError="Failed to create forum"
+            messageWarning="Forum already exists"
+            object="Foro"
           />
         </div>
+        :
+        null
       }
 
       <div className="forum-content">
@@ -100,7 +108,7 @@ const ListForum = () => {
                   <td>{forum.topic}</td>
                   <td>
                     {
-                      forum.image &&
+                      forum.image !== 'undefined' &&
                       <div className="container-image">
                         <img src={forum.image} alt="" className="forum-image" />
                       </div>
