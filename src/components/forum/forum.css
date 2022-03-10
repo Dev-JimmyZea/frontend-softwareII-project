@@ -113,6 +113,8 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     padding-top: 1.5rem;
+    word-wrap: break-word;
+    width: 28rem;
 }
 
 .forum-table tbody tr td img{
@@ -120,12 +122,4 @@
     margin: auto;
     height: 13rem;
     object-fit: cover;
-}
-
-.container-image {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 0.5rem;
-    padding: 1rem;
-    padding-bottom: 0;
 }
