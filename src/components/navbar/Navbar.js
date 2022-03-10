@@ -1,35 +1,35 @@
-import './navbar.css';
-import Logo from '../../resources/img/cabecera.png';
-import { useState, useEffect } from 'react';
+import './navbar.css'
+import Logo from '../../resources/img/cabecera.png'
+import { useState, useEffect } from 'react'
 
 const Navbar = () => {
 
-    const [show, setShow] = useState(0);
-    const user = JSON.parse(localStorage.getItem('user'));
+    const [show, setShow] = useState(0)
+    const user = JSON.parse(localStorage.getItem('user'))
     const closeSession = () => {
-        localStorage.clear();
-        window.location.href = '/';
-        setShow(0);
+        localStorage.clear()
+        window.location.href = '/'
+        setShow(0)
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        const expired = token ? JSON.parse(atob(token.split('.')[1])).exp < Date.now() / 1000 : false;
-        let user = localStorage.getItem('user');
+        const token = localStorage.getItem('token')
+        const expired = token ? JSON.parse(atob(token.split('.')[1])).exp < Date.now() / 1000 : false
+        let user = localStorage.getItem('user')
 
         if (user && token && !expired) {
-            user = JSON.parse(user);
+            user = JSON.parse(user)
 
             if (user.role === 'SUPERADMIN') {
-                setShow(1);
+                setShow(1)
             } else if (user.role === 'ADMIN') {
-                setShow(2);
+                setShow(2)
             } else {
-                setShow(3);
+                setShow(3)
             }
 
         } else {
-            setShow(0);
+            setShow(0)
         }
     }, [])
 
@@ -99,7 +99,7 @@ const Navbar = () => {
                 </ul>
             </div>
         </div>
-    );
+    )
 }
 
 export default Navbar

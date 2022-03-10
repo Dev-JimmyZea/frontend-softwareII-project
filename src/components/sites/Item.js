@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import Navbar from "../navbar/Navbar"
 import Footer from "../footer/Footer"
@@ -8,9 +8,9 @@ import ValidateUser from "../login/UserVerification"
 
 const Item = ({ object }) => {
 
-    const id = window.location.pathname.split('/')[2];
-    const [data, setData] = useState([]);
-    const user = localStorage.getItem('user');
+    const id = window.location.pathname.split('/')[2]
+    const [data, setData] = useState([])
+    const user = localStorage.getItem('user')
 
     const getData = async (url, meth) => {
         const response = await fetch(url, {
@@ -24,22 +24,22 @@ const Item = ({ object }) => {
             },
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
-        });
-        return response.json();
+        })
+        return response.json()
     }
 
     useEffect(() => {
         getData(`${process.env.REACT_APP_URL_BACKEND}${object}/${id}`, 'GET')
             .then(data => {
                 if (data.message === 'New fetched successfully' || data.message === 'Work fetched successfully') {
-                    setData(data.data);
+                    setData(data.data)
                 } else {
-                    window.history.back();
+                    window.history.back()
                 }
             }
             )
             .catch(err => console.log(err))
-    }, [id, object]);
+    }, [id, object])
 
     const apply = async (idStudent, no_apply) => {
         Swal.fire({

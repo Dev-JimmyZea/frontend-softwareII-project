@@ -1,4 +1,4 @@
-import './cards.css';
+import './cards.css'
 
 const Cards = (props) => {
     return <>
@@ -26,6 +26,6 @@ const Cards = (props) => {
             </a>
         </div>
     </>
-};
+}
 
-export default Cards;
+export default Cards

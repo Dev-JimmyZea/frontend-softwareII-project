@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import './login.css';
+import React, { useState } from 'react'
+import './login.css'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 const Login = ({pathname}) => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const [user, setUser] = useState({
         email: '',
         password: ''
-    });
+    })
 
     const send = async (url, data, meth) => {
         const response = await fetch(url, {
@@ -24,12 +24,12 @@ const Login = ({pathname}) => {
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
             body: JSON.stringify(data),
-        });
-        return response.json();
+        })
+        return response.json()
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         send(`${process.env.REACT_APP_URL_BACKEND}user/login`, user, 'POST').then(data => {
             if (data.message === 'User logged in successfully') {
 
@@ -42,12 +42,12 @@ const Login = ({pathname}) => {
                 })
 
                 setTimeout(() => {
-                    const { token, data:user } = data;
-                    localStorage.setItem('token', token);
-                    localStorage.setItem('user', JSON.stringify(user));
-                    navigate(pathname === '/login' ? '/' : pathname);
-                    window.location.reload();
-                }, 1000);
+                    const { token, data:user } = data
+                    localStorage.setItem('token', token)
+                    localStorage.setItem('user', JSON.stringify(user))
+                    navigate(pathname === '/login' ? '/' : pathname)
+                    window.location.reload()
+                }, 1000)
 
             } else if (data.message === 'User not found') {
                 Swal.fire({
@@ -77,7 +77,7 @@ const Login = ({pathname}) => {
                 showConfirmButton: false,
                 timer: 1500
             })
-        });
+        })
 
     }
 
@@ -115,4 +115,4 @@ const Login = ({pathname}) => {
     )
 }
 
-export default Login;
+export default Login

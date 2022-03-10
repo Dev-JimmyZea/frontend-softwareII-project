@@ -1,12 +1,12 @@
-import Cards from '../cards/Cards';
+import Cards from '../cards/Cards'
 import './content.css'
-import Slider from 'react-slick';
-import { useEffect, useState } from 'react';
+import Slider from 'react-slick'
+import { useEffect, useState } from 'react'
 
 export default function Content({ isNews }) {
 
-    const [news, setNews] = useState([]);
-    const [work, setWork] = useState([]);
+    const [news, setNews] = useState([])
+    const [work, setWork] = useState([])
 
     useEffect(() => {
         isNews ?
@@ -51,7 +51,7 @@ export default function Content({ isNews }) {
                 },
             },
         ],
-    };
+    }
 
     return (
         <div className={'content-container'}>

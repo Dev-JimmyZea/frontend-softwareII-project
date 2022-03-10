@@ -1,4 +1,4 @@
-import './aside.css';
+import './aside.css'
 
 const Aside = () => {
 
