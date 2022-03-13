@@ -76,7 +76,7 @@ const Crud = (props) => {
             window.location.reload()
 
           }, 1500);
-        } else if (res.message === 'Career already exists') {
+        } else if (res.message === `${props.object} already exists`) {
           Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -244,6 +244,16 @@ const Crud = (props) => {
                             } else {
                               return (
                                 <td key={column.key}>---------------</td>
+                              )
+                            }
+                          }else if (column.key === 'role') {
+                            if (data[column.key] === 'ADMIN') {
+                              return (
+                                <td key={column.key}>Administrador</td>
+                              )
+                            } else {
+                              return (
+                                <td key={column.key}>Estudiante</td>
                               )
                             }
                           } else {
