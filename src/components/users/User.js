@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import Crud from '../crud/Crud'
-import './user.css'
 
 const User = () => {
 
@@ -11,13 +10,12 @@ const User = () => {
       .then(res => res.json())
       .then(data => setCareers(data.data))
       .catch(err => console.log(err))
-
   }, [])
 
   const form =
     <div className={'container-form-crud'}>
       <div className="form-group">
-        <label htmlFor="id">Id Usuario</label>
+        <label htmlFor="id">Id Estudiante</label>
         <input type="text" className="form-control" name="userId" id="id" required />
       </div>
       <div className="form-group">
@@ -37,6 +35,18 @@ const User = () => {
         <input type="password" className="form-control" name="password" id="password" required />
       </div>
       <div className="form-group">
+        <label htmlFor="role">Rol</label>
+        <select className="form-control" onChange={() =>
+          document.getElementById('role').value === 'ADMIN' ?
+            document.getElementById('field-hidden').style.display = 'none' :
+            document.getElementById('field-hidden').style.display = 'block'
+        } name="role" id="role" required>
+          <option defaultValue="Seleccione" disabled selected>Seleccione un rol</option>
+          <option value="ADMIN">Administrador</option>
+          <option value="STUDENT">Estudiante</option>
+        </select>
+      </div>
+      <div className="form-group" id={'field-hidden'} hidden>
         <label htmlFor="career">Carrera</label>
         <select className="form-control" id="career" name="career" required>
           <option defaultValue="Seleccione" disabled selected>Seleccione una carrera</option>
@@ -48,17 +58,9 @@ const User = () => {
         </select>
       </div>
       <div className="form-group">
-        <label htmlFor="role">Rol</label>
-        <select className="form-control" name="role" id="role" required>
-          <option defaultValue="Seleccione" disabled selected>Seleccione un rol</option>
-          <option value="ADMIN">Administrador</option>
-          <option value="STUDENT">Estudiante</option>
-        </select>
-      </div>
-      <div className="form-group">
         <label htmlFor="gender">Género</label>
         <select className="form-control" name="gender" id="gender" required>
-          <option defaultValue="Seleccione" disabled selected>Seleccione un geénero</option>
+          <option defaultValue="Seleccione" disabled selected>Seleccione un género</option>
           <option value="M">Masculino</option>
           <option value="F">Femenino</option>
         </select>
@@ -66,11 +68,11 @@ const User = () => {
     </div>
 
   return (
-    <div className={'user-container'}>
-      <div className={'user-title'}>
+    <div className={'object-container'}>
+      <div className={'object-title'}>
         <h1>Usuarios</h1>
       </div>
-      <div className={'user-content'}>
+      <div className={'object-content'}>
         <Crud
           title={'Usuarios'}
           object={'User'}

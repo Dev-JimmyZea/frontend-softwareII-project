@@ -45,7 +45,7 @@ const Navbar = () => {
                         show === 1 ?
                             <>
                                 <li className={'navbar-item'}>
-                                    <a href={'/'}>Bienvenid@ {user.name} {user.lastName}</a>
+                                    <a href={'/'}>Bienvenid@ Superadministrador {user.name} {user.lastName}</a>
                                 </li>
                                 <li className={'navbar-item'}>
                                     <a href={'/superadmin-careers'}>Carreras</a>
@@ -61,7 +61,7 @@ const Navbar = () => {
                             : show === 2 ?
                                 <>
                                     <li className={'navbar-item'}>
-                                        <a href={'/'}>Bienvenid@ {user.name} {user.lastName}</a>
+                                        <a href={'/'}>Bienvenid@ Administrador {user.name} {user.lastName}</a>
                                     </li>
                                     <li className={'navbar-item'}>
                                         <a href={'/admin-works'}>Trabajos</a>
@@ -76,7 +76,7 @@ const Navbar = () => {
                                 : show === 3 ?
                                     <>
                                         <li className={'navbar-item'}>
-                                            <a href={'/'}>Bienvenid@ {user.name} {user.lastName}</a>
+                                            <a href={'/'}>Bienvenid@ Estudiante {user.name} {user.lastName}</a>
                                         </li>
                                         <li className={'navbar-item'}>
                                             <a href={'/student-notification'}>Notificaciones</a>

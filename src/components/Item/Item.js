@@ -38,27 +38,24 @@ const Item = (props) => {
                                 <span>{props.company}</span>
                             </div>
                             <div className="item-features-applicants">
-
+                                <h3>{`Válido hasta el ${props.valid_until && new Date(props.valid_until).toLocaleDateString('es-ES', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                })}`}</h3>
                                 {
                                     props.user.role === 'STUDENT' ?
                                         <>
                                             {
                                                 props.applicants && props.applicants.length !== 0 && props.applicants.includes(props.user._id) ?
-                                                    <>
-                                                        <h3>{`Aplica hasta el ${props.valid_until && props.valid_until.substring(0, 10)} aquí`}</h3>
-                                                        <button onClick={() => props.apply(props.user._id, true)}>Cancelar</button>
-                                                    </>
+                                                    <button onClick={() => props.apply(props.user._id, true)}>Cancelar</button>
                                                     :
-                                                    <>
-                                                        <h3>{`Aplica hasta el ${props.valid_until && props.valid_until.substring(0, 10)} aquí`}</h3>
-                                                        <button onClick={() => props.apply(props.user._id)}>Aplicar</button>
-                                                    </>
+                                                    <button onClick={() => props.apply(props.user._id)}>Aplicar</button>
                                             }
                                         </>
                                         :
                                         <>
-                                            <h3>{'Ver aplicantes'}</h3>
-                                            <a className={'link'} href={'/'}>Ver</a>
+                                            <a className={'link'} href={'/'}>Ver Aplicantes</a>
                                         </>
                                 }
                             </div>

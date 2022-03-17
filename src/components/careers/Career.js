@@ -1,5 +1,4 @@
 import Crud from '../crud/Crud'
-import './career.css'
 
 const Career = () => {
 
@@ -34,11 +33,11 @@ const Career = () => {
     </div>
 
   return (
-    <div className={'career-container'}>
-      <div className={'career-title'}>
+    <div className={'object-container'}>
+      <div className={'object-title'}>
         <h1>Carreras</h1>
       </div>
-      <div className={'career-content'}>
+      <div className={'object-content'}>
         <Crud
           title={'Carreras'}
           object={'Career'}

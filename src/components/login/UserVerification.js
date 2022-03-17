@@ -12,7 +12,6 @@ const ValidateUser = ({ children, role }) => {
         const token = localStorage.getItem('token')
         const expired = token ? JSON.parse(atob(token.split('.')[1])).exp < Date.now() / 1000 : false
         const user = localStorage.getItem('user')
-
         if (user) {
             const userRole = JSON.parse(user).role
             if (!expired && (userRole === role || role === 'ALL')) {

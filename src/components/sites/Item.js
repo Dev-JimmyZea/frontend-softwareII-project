@@ -33,11 +33,8 @@ const Item = ({ object }) => {
             .then(data => {
                 if (data.message === 'New fetched successfully' || data.message === 'Work fetched successfully') {
                     setData(data.data)
-                } else {
-                    window.history.back()
                 }
-            }
-            )
+            })
             .catch(err => console.log(err))
     }, [id, object])
 

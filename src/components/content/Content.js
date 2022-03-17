@@ -7,17 +7,25 @@ export default function Content({ isNews }) {
 
     const [news, setNews] = useState([])
     const [work, setWork] = useState([])
+    const [count, setCount] = useState(isNews ? news.length : work.length)
+
 
     useEffect(() => {
         isNews ?
             fetch(`${process.env.REACT_APP_URL_BACKEND}news`)
                 .then(res => res.json())
-                .then(data => setNews(data.data))
+                .then(data => {
+                    setNews(data.data)
+                    setCount(data.data.length)
+                })
                 .catch(err => console.log(err))
             :
             fetch(`${process.env.REACT_APP_URL_BACKEND}work`)
                 .then(res => res.json())
-                .then(data => setWork(data.data))
+                .then(data => {
+                    setWork(data.data)
+                    setCount(data.data.length)
+                })
                 .catch(err => console.log(err))
     },[isNews])
 
@@ -25,21 +33,21 @@ export default function Content({ isNews }) {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: count > 3 ? 4 : count,
         slidesToScroll: 1,
         cssEase: 'linear',
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: count > 3 ? 3 : count,
                     slidesToScroll: 1,
                 },
             },
             {
                 breakpoint: 900,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: count > 2 ? 2 : count,
                     slidesToScroll: 1,
                 },
             },

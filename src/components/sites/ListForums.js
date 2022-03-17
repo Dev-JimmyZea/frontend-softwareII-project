@@ -1,7 +1,7 @@
 import Aside from "../aside/Aside"
 import Navbar from "../navbar/Navbar"
 import Footer from "../footer/Footer"
-import ListForumsC from "../forum/ListForums"
+import Forum from "../forum/Forum"
 
 const ListForums = () => {
 
@@ -10,7 +10,7 @@ const ListForums = () => {
             <Navbar />
             <div className={'body-container'} id={'body-container'}>
                 <Aside />
-                <ListForumsC />
+                <Forum />
             </div>
             <Footer />
         </>

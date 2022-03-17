@@ -14,7 +14,6 @@
 .forum-container::-webkit-scrollbar {
     display: none;
 }
-  
 
 .forum-container .forum-title h1{
     margin: 0;
@@ -35,6 +34,7 @@
     color: white;
     font-size: 0.9rem;
     height: 1.7rem;
+    border: none;
 }
 
 .forum-container .forum-create button:hover{

@@ -102,11 +102,12 @@ html {
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 0.5rem;
     cursor: pointer;
-    width: 5rem;
+    width: 8rem;
     color: white;
     font-size: 0.9rem;
     display: inline-block;
     text-decoration: none;
+    border: none;
 }
 
 .item-container .item-features .item-features-applicants button:hover, .link:hover{
