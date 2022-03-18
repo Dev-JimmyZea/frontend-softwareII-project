@@ -19,7 +19,7 @@ const Crud = (props) => {
 
     inputs.forEach(input => {
       if (input.type !== 'file') {
-        dataL[input.name] = input.value
+        dataL[input.name] = input.value.charAt(0).toUpperCase() + input.value.slice(1).toLowerCase()
       } else {
         dataL[input.name] = input.files[0]
       }
@@ -28,14 +28,14 @@ const Crud = (props) => {
       dataL[select.name] = select.value
     })
     textAreas.forEach(textArea => {
-      dataL[textArea.name] = textArea.value
+      dataL[textArea.name] = textArea.value.charAt(0).toUpperCase() + textArea.value.slice(1).toLowerCase()
     })
 
     return dataL
   }
 
   useEffect(() => {
-    crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object}`, 'GET')
+    crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object.toLowerCase()}`, 'GET')
       .then(data => setdata(data.data))
       .catch(err => console.log(err))
   }, [])
@@ -84,10 +84,11 @@ const Crud = (props) => {
       dataL.user = JSON.parse(user).userId
     }
 
-    crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object}${isEdit ? "/" + id : ''}`, isEdit ? 'PUT' : 'POST', {
+    crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object.toLowerCase()}${isEdit ? "/" + id : ''}`, isEdit ? 'PUT' : 'POST', {
       ...dataL
     })
       .then(res => {
+        console.log(res.message)
         if (res.message === `${props.object} ${isEdit ? 'updated' : 'created'} successfully`) {
           Swal.fire({
             icon: 'success',
@@ -191,9 +192,9 @@ const Crud = (props) => {
                 confirmButtonText: 'Si, borralo!'
               }).then((result) => {
                 if (result.value) {
-                  crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object}`, 'DELETE')
+                  crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object.toLowerCase()}`, 'DELETE')
                     .then(res => {
-                      if (res.message === `${props.object}s deleted successfully`) {
+                      if (res.message === `${props.object === 'News' ? props.object : `${props.object}s`} deleted successfully`) {
                         Swal.fire({
                           icon: 'success',
                           title: `Registros eliminados con éxito`,
@@ -353,7 +354,7 @@ const Crud = (props) => {
                                   setIsEdit(true)
                                   setId(data._id)
                                   openModal()
-                                  crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object}/${data._id}`, 'GET')
+                                  crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object.toLowerCase()}/${data._id}`, 'GET')
                                     .then(res => {
                                       setDataForm(res.data)
                                     })
@@ -378,7 +379,7 @@ const Crud = (props) => {
                                     confirmButtonText: 'Si, borralo!'
                                   }).then((result) => {
                                     if (result.value) {
-                                      crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object}/${data._id}`, 'DELETE')
+                                      crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object.toLowerCase()}/${data._id}`, 'DELETE')
                                         .then(res => {
                                           if (res.message === `${props.object} deleted successfully`) {
                                             Swal.fire({

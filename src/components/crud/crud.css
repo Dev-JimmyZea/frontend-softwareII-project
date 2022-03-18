@@ -245,10 +245,6 @@
     color: rgb(63, 122, 107);
 }
 
-.data-container-table .data-body .tableForum tbody tr td::first-letter{
-    text-transform: uppercase;
-}
-
 .data-container-table .data-body .table tbody tr .desc {
     text-align: justify;
     padding-top: 1rem;
