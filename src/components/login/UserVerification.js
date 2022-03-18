@@ -12,24 +12,29 @@ const ValidateUser = ({ children, role }) => {
         const token = localStorage.getItem('token')
         const expired = token ? JSON.parse(atob(token.split('.')[1])).exp < Date.now() / 1000 : false
         const user = localStorage.getItem('user')
-        if (user) {
-            const userRole = JSON.parse(user).role
-            if (!expired && (userRole === role || role === 'ALL')) {
-                setShowChild(true)
-            } else if (!expired && userRole !== role) {
-                setTimeout(() => {
-                    navigate('../')
-                    window.location.reload()
-                }, 1000)
+        if (role === null) {
+            setShowChild(true)
+        } else {
+
+            if (user) {
+                const userRole = JSON.parse(user).role
+                if (!expired && (userRole === role || role === 'ALL')) {
+                    setShowChild(true)
+                } else if (!expired && userRole !== role) {
+                    setTimeout(() => {
+                        navigate('../')
+                        window.location.reload()
+                    }, 1000)
+                } else {
+                    setTimeout(() => {
+                        navigate('../login')
+                    }, 1000)
+                }
             } else {
                 setTimeout(() => {
                     navigate('../login')
                 }, 1000)
             }
-        } else {
-            setTimeout(() => {
-                navigate('../login')
-            }, 1000)
         }
 
     }, [navigate, role])

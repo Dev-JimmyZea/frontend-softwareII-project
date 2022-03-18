@@ -33,6 +33,16 @@ const Item = ({ object }) => {
             .then(data => {
                 if (data.message === 'New fetched successfully' || data.message === 'Work fetched successfully') {
                     setData(data.data)
+                } else if (data.message === 'Failed to fetch work' || data.message === 'Failed to fetch new' || data.message === 'Work not found' || data.message === 'New not found') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `No existe ${object === 'work' ? 'un trabajo' : 'una noticia'} con ese id`,
+                        timer: 2000,
+                    })
+                    setTimeout(() => {
+                        window.history.back()
+                    }, 2000)
                 }
             })
             .catch(err => console.log(err))
@@ -83,7 +93,7 @@ const Item = ({ object }) => {
 
     return (
         <>
-            <ValidateUser role='ALL'>
+            <ValidateUser role={object === 'news' ? null : 'ALL'}>
                 <Navbar />
                 {
                     data ?
