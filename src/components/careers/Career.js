@@ -12,7 +12,7 @@ const Career = () => {
         <label htmlFor="name">Nombre *</label>
         <input type="text" className="form-control" name="name" id="name" required />
       </div>
-      <div className="form-group">
+      <div className="form-group form-description">
         <label htmlFor="faculty">Facultad *</label>
         <select className="form-control" id="faculty" name="faculty" required>
           <option defaultValue="Seleccione" disabled selected>Seleccione una facultad</option>

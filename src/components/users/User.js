@@ -57,7 +57,7 @@ const User = () => {
           }
         </select>
       </div>
-      <div className="form-group">
+      <div className="form-group form-description">
         <label htmlFor="gender">Género *</label>
         <select className="form-control" name="gender" id="gender" required>
           <option defaultValue="Seleccione" disabled selected>Seleccione un género</option>

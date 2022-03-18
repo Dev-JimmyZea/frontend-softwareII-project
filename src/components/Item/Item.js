@@ -5,9 +5,9 @@ const Item = (props) => {
     return (
         <div className="container-item">
             <div className="container-item-title">
-                <a href={`/${props.object === 'news' ? './' : props.object}`}>
-                    Volver
-                </a>
+                <button onClick={() => {
+                    window.history.back()
+                }}>Volver</button>
                 <h1>{
                     props.object === 'news' ?
                         'Noticias'
@@ -76,7 +76,7 @@ const Item = (props) => {
                 </div>
             </div>
             {
-                props.user.role === 'SUPERADMIN' || props.user.role === 'ADMIN' ?
+                props.object === 'work' && (props.user.role === 'SUPERADMIN' || props.user.role === 'ADMIN') ?
                     <div className="table-applicants">
                         <a name="applicants" />
                         <h2>Aplicantes</h2>

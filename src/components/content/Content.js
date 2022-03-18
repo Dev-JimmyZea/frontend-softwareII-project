@@ -71,7 +71,7 @@ export default function Content({ isNews }) {
                             news.map(news => (
                                 <Cards
                                     key={news.code}
-                                    code={news.code}
+                                    code={news._id}
                                     content={news.content}
                                     created_at={news.created_at.substring(0, 10)}
                                     image={news.image}
@@ -82,7 +82,7 @@ export default function Content({ isNews }) {
                             work && work.map(work => (
                                 <Cards
                                     key={work.code}
-                                    code={work.code}
+                                    code={work._id}
                                     title={work.charge}
                                     content={work.description}
                                     created_at={work.created_at.substring(0, 10)}

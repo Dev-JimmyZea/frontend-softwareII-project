@@ -38,7 +38,7 @@ const Crud = (props) => {
     crudData(`${process.env.REACT_APP_URL_BACKEND}${props.object}`, 'GET')
       .then(data => setdata(data.data))
       .catch(err => console.log(err))
-  })
+  }, [])
 
   Modal.setAppElement('#root')
 
@@ -49,7 +49,7 @@ const Crud = (props) => {
     }
     const headers = {}
     let bodyS = null
-    if (props.object !== 'Forum') {
+    if (props.object !== 'Forum' && props.object !== 'Work' && props.object !== 'News') {
       headers['Content-type'] = 'application/json'
       headers['x-access-token'] = localStorage.getItem('token')
       bodyS = JSON.stringify(data)
@@ -108,7 +108,8 @@ const Crud = (props) => {
           closeModal()
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -136,8 +137,10 @@ const Crud = (props) => {
     keys.forEach((key, i) => {
       if (key !== '__v') {
         inputs.forEach(input => {
-          if (input.name === key && input.name !== 'password') {
+          if (input.type!== 'file' && input.type !== 'date' && input.name === key && input.name !== 'password') {
             input.value = values[i]
+          } else if (input.type === 'date' && input.name === key) {
+            input.value = values[i].slice(0, 10)
           }
         })
         selects.forEach(select => {
@@ -202,7 +205,8 @@ const Crud = (props) => {
                         }, 1500);
                       }
                     })
-                    .catch(() => {
+                    .catch((err) => {
+                      console.log(err)
                       Swal.fire({
                         icon: 'error',
                         title: 'Error',
@@ -233,7 +237,7 @@ const Crud = (props) => {
             <h1>{isEdit ? 'Editar' : 'Nuevo'} Registro</h1>
           </div>
           <div className={'required'}>
-            <span>Los campos con *son obligatorios</span>
+            <span>Los campos con * son obligatorios</span>
           </div>
           <div className="modal-body">
             <form onSubmit={submit} className="form-modal">
@@ -279,9 +283,11 @@ const Crud = (props) => {
                         <tr key={data._id}>
                           {
                             props.columns.map(column => {
-                              if (props.object === 'Forum' && column.key === 'title') {
+                              if ((props.object === 'Forum' || props.object === 'Work' || props.object === 'News') && column.key === 'title') {
                                 return (
-                                  <td key={column.key}>{<a href="forum/:id">{data[column.key]}</a>}</td>
+                                  <td key={column.key}>{<a onClick={() => {
+                                    setId(data._id)
+                                  }} href={props.object === 'Forum' ? `forum/${id}` : props.object==='Work' ? `work/${id}` : `news/${id}`}>{data[column.key]}</a>}</td>
                                 )
                               } else {
                                 if (column.type === 'date') {
@@ -312,13 +318,13 @@ const Crud = (props) => {
                                     }
                                   } else if (column.key === 'description') {
                                     return (
-                                      <td key={column.key}>
+                                      <td key={column.key} className={props.object==='Work' ? 'desc d-3' : 'desc'}>
                                         <div className="description-container">
                                           {
-                                            data.image !== 'undefined' ? <img src={data.image} alt="" /> : null
+                                            props.object === 'Forum' && data.image !== 'undefined' ? <img src={data.image} alt="" /> : null
                                           }
 
-                                          <p className="p-description">
+                                          <p className={props.object==='Work' ? 'p-description p-3' : 'p-description'}>
                                             {
                                               data[column.key] && data[column.key].split('\n').map((item, index) => (
                                                 <p key={index}>{item}</p>
@@ -352,6 +358,7 @@ const Crud = (props) => {
                                       setDataForm(res.data)
                                     })
                                     .catch((err) => {
+                                      console.log(err)
                                       Swal.fire({
                                         icon: 'error',
                                         title: 'Error',
@@ -385,7 +392,8 @@ const Crud = (props) => {
                                             }, 1500);
                                           }
                                         })
-                                        .catch(() => {
+                                        .catch((err) => {
+                                          console.log(err)
                                           Swal.fire({
                                             icon: 'error',
                                             title: 'Error',
