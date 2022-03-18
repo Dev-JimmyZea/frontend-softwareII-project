@@ -40,10 +40,10 @@ const Item = ({ object }) => {
 
     const apply = async (idStudent, no_apply) => {
         Swal.fire({
-            title: !no_apply ? 'Deseas aplicar a este trabajo?' : 'Desea cancelar la aplicación?',
+            title: !no_apply ? 'Deseas aplicar a este trabajo?' : 'Desea cancelar la aplicación a este trabajo?',
             showCancelButton: true,
             confirmButtonText: 'Si',
-            cancelButtonText: 'Cancelar',
+            cancelButtonText: 'No',
         }).then((result) => {
             if (result.isConfirmed) {
                 getData(`${process.env.REACT_APP_URL_BACKEND}work/${no_apply ? 'remove/' : '/'}${id}/${idStudent}`, 'PUT')
@@ -72,7 +72,7 @@ const Item = ({ object }) => {
                 Swal.fire({
                     position: 'top',
                     icon: 'error',
-                    title: 'Cancelado',
+                    title: 'De acuerdo',
                     showConfirmButton: false,
                     timer: 1000
                 })
