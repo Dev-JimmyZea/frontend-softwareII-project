@@ -343,7 +343,7 @@ const Crud = (props) => {
                           {
                             props.object !== 'Forum' ?
                               <td className={'table-actions'}>
-                                <button className="btn-edit" onClick={() => {
+                                <i className="fa-solid fa-pen-to-square fa-lg" onClick={() => {
                                   setIsEdit(true)
                                   setId(data._id)
                                   openModal()
@@ -358,8 +358,9 @@ const Crud = (props) => {
                                         text: 'Ha ocurrido un error'
                                       })
                                     })
-                                }}>Editar</button>
-                                <button className="btn-delete" onClick={() => {
+                                }}></i>
+                        
+                                <i className="fa-solid fa-trash fa-lg" onClick={() => {
                                   Swal.fire({
                                     title: '¿Estas seguro que deseas eliminar el registro?',
                                     text: "No podras revertir esto!",
@@ -393,27 +394,27 @@ const Crud = (props) => {
                                         })
                                     }
                                   })
-                                }}>Eliminar</button>
+                                }}></i>
                               </td> : null
                           }
 
 
-                        </tr>
-                      )
+              </tr>
+              )
                     })
                   }
 
-                </tbody>
+            </tbody>
               </table>
-            </div>
+    </div>
             :
-            <div className="data-body">
-              <h2>No hay registros</h2>
-            </div>
+<div className="data-body">
+  <h2>No hay registros</h2>
+</div>
 
         }
 
-      </div>
+      </div >
     </div >
   )
 }
