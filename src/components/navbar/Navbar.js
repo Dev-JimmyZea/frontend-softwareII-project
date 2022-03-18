@@ -54,7 +54,7 @@ const Navbar = () => {
                                     <a href={'/superadmin-users'}>Usuarios</a>
                                 </li>
                                 <li className={'navbar-item'}>
-                                    <button onClick={closeSession}>Salir</button>
+                                    <button onClick={closeSession}><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                                 </li>
 
                             </>
@@ -70,7 +70,7 @@ const Navbar = () => {
                                         <a href={'/admin-news'}>Noticias</a>
                                     </li>
                                     <li className={'navbar-item'}>
-                                        <button onClick={closeSession}>Salir</button>
+                                        <button onClick={closeSession}><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                                     </li>
                                 </>
                                 : show === 3 ?
@@ -79,19 +79,19 @@ const Navbar = () => {
                                             <a href={'/'}>Bienvenid@ Estudiante {user.name} {user.lastName}</a>
                                         </li>
                                         <li className={'navbar-item'}>
-                                            <a href={'/student-notification'}>Notificaciones</a>
+                                            <a href={'/student-profile'}><i class="fa-solid fa-user"></i></a>
                                         </li>
                                         <li className={'navbar-item'}>
-                                            <a href={'/student-profile'}>Perfil</a>
+                                            <a href={'/student-notification'}><i class="fa-solid fa-bell"></i></a>
                                         </li>
                                         <li className={'navbar-item'}>
-                                            <button onClick={closeSession}>Salir</button>
+                                            <button onClick={closeSession}><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                                         </li>
                                     </>
                                     :
                                     <>
                                         <li className={'navbar-item'}>
-                                            <a href="./login">Iniciar Sesion</a>
+                                            <a href="/login">Iniciar Sesion</a>
                                         </li>
                                     </>
 
