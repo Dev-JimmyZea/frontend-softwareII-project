@@ -219,24 +219,15 @@
     padding-bottom: 2rem;
 }
 
-.data-container-table .data-body .table tbody tr .table-actions button:first-child{
-    background-color: #ad8b19;
-    border-radius: 0.5rem;
+.data-container-table .data-body .table tbody tr .table-actions i:first-child{
     cursor: pointer;
-    font-size: 0.9rem;
-    height: 1.5rem;
+    color: #118843;
     margin-right: 0.5rem;
-    border: none;
 }
 
-.data-container-table .data-body .table tbody tr .table-actions button:last-child{
-    background-color: rgba(153, 0, 0, 0.75);
-    border-radius: 0.5rem;
+.data-container-table .data-body .table tbody tr .table-actions i:last-child{
+    color: rgb(121, 3, 3);
     cursor: pointer;
-    color: rgb(196, 182, 182);
-    font-size: 0.9rem;
-    height: 1.5rem;
-    border: none;
 }
 
 .data-container-table .data-body .tableForum tbody tr td a{
