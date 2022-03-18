@@ -31,9 +31,9 @@ const Item = ({ object }) => {
     useEffect(() => {
         getData(`${process.env.REACT_APP_URL_BACKEND}${object}/${id}`, 'GET')
             .then(data => {
-                if (data.message === 'New fetched successfully' || data.message === 'Work fetched successfully') {
+                if (data.message === 'News fetched successfully' || data.message === 'Work fetched successfully') {
                     setData(data.data)
-                } else if (data.message === 'Failed to fetch work' || data.message === 'Failed to fetch new' || data.message === 'Work not found' || data.message === 'New not found') {
+                } else if (data.message === 'Failed to fetch work' || data.message === 'Failed to fetch news' || data.message === 'Work not found' || data.message === 'News not found') {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
