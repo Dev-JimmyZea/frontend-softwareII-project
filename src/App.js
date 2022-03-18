@@ -6,6 +6,8 @@ import ListForums from "./components/sites/ListForums"
 import Item from "./components/sites/Item"
 import Users from "./components/sites/Users"
 import Careers from "./components/sites/Careers"
+import Works from "./components/sites/Works"
+import News from "./components/sites/News"
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
@@ -41,6 +43,8 @@ const App = () => {
         <Route exact path="/forum" element={<ListForums />} />
         <Route exact path="/superadmin-users" element={<Users />} />
         <Route exact path="/superadmin-careers" element={<Careers />} />
+        <Route exact path="/admin-works" element={<Works />} />
+        <Route exact path="/admin-news" element={<News />} />
         <Route path="*" element={<Home no_match={true} />} />
 
       </Routes>
