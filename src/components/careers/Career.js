@@ -5,15 +5,15 @@ const Career = () => {
   const form =
     <div className={'container-form-crud'}>
       <div className="form-group">
-        <label htmlFor="code">Codigo</label>
+        <label htmlFor="code">Codigo *</label>
         <input type="text" className="form-control" name="code" id="code" required />
       </div>
       <div className="form-group">
-        <label htmlFor="name">Nombre</label>
+        <label htmlFor="name">Nombre *</label>
         <input type="text" className="form-control" name="name" id="name" required />
       </div>
       <div className="form-group">
-        <label htmlFor="faculty">Facultad</label>
+        <label htmlFor="faculty">Facultad *</label>
         <select className="form-control" id="faculty" name="faculty" required>
           <option defaultValue="Seleccione" disabled selected>Seleccione una facultad</option>
           <option value="Ciencias Agropecuarias">Ciencias Agropecuarias</option>
