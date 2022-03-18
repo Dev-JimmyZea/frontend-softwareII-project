@@ -55,7 +55,7 @@ const Item = (props) => {
                                         </>
                                         :
                                         <>
-                                            <a className={'link'} href={'/'}>Ver Aplicantes</a>
+                                            <a className={'link'} href={'#applicants'}>Ver Aplicantes</a>
                                         </>
                                 }
                             </div>
@@ -75,6 +75,46 @@ const Item = (props) => {
                     }
                 </div>
             </div>
+            {
+                props.user.role === 'SUPERADMIN' || props.user.role === 'ADMIN' ?
+                    <div className="table-applicants">
+                        <a name="applicants" />
+                        <h2>Aplicantes</h2>
+                        {
+                            props.applicants && props.applicants.length !== 0 ?
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Correo</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            props.applicants.map((item, index) => (
+                                                <tr key={index}>
+                                                    <td>{index + 1}</td>
+                                                    <td>{item.name}</td>
+                                                    <td>{item.lastName}</td>
+                                                    <td>{item.email}</td>
+                                                </tr>
+                                            ))
+
+                                        }
+                                    </tbody>
+                                </table>
+                                :
+                                <tr>
+                                    <td colSpan={7}>No hay aplicantes para este trabajo</td>
+                                </tr>
+                        }
+                    </div>
+                    :
+                    null
+            }
         </div>
     )
 }
