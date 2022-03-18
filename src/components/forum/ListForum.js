@@ -1,6 +1,6 @@
 import Crud from '../crud/Crud'
 
-const Forum = () => {
+const ListForum = () => {
 
     const form =
         <div className={'container-form-crud'}>
@@ -72,4 +72,4 @@ const Forum = () => {
     )
 }
 
-export default Forum
+export default ListForum
