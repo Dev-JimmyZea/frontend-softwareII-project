@@ -19,7 +19,7 @@ const Crud = (props) => {
 
     inputs.forEach(input => {
       if (input.type !== 'file') {
-        dataL[input.name] = input.value.charAt(0).toUpperCase() + input.value.slice(1).toLowerCase()
+        dataL[input.name] = input.name !== 'name' && input.name !== 'email' && input.name !== 'lastName' ? input.value.trim().charAt(0).toUpperCase() + input.value.slice(1).toLowerCase() : input.value.trim()
       } else {
         dataL[input.name] = input.files[0]
       }
@@ -28,7 +28,7 @@ const Crud = (props) => {
       dataL[select.name] = select.value
     })
     textAreas.forEach(textArea => {
-      dataL[textArea.name] = textArea.value.charAt(0).toUpperCase() + textArea.value.slice(1).toLowerCase()
+      dataL[textArea.name] = textArea.value.trim().charAt(0).toUpperCase() + textArea.value.slice(1).toLowerCase()
     })
 
     return dataL
@@ -88,7 +88,6 @@ const Crud = (props) => {
       ...dataL
     })
       .then(res => {
-        console.log(res.message)
         if (res.message === `${props.object} ${isEdit ? 'updated' : 'created'} successfully`) {
           Swal.fire({
             icon: 'success',

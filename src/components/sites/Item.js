@@ -56,7 +56,7 @@ const Item = ({ object }) => {
             cancelButtonText: 'No',
         }).then((result) => {
             if (result.isConfirmed) {
-                getData(`${process.env.REACT_APP_URL_BACKEND}work/${no_apply ? 'remove/' : '/'}${id}/${idStudent}`, 'PUT')
+                getData(`${process.env.REACT_APP_URL_BACKEND}work/${no_apply ? 'remove/' : ''}${id}/${idStudent}`, 'PUT')
                     .then(data => {
                         if (data.message === 'Applicant added successfully') {
                             Swal.fire({

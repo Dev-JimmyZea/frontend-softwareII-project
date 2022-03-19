@@ -46,7 +46,7 @@ const User = () => {
           <option value="STUDENT">Estudiante</option>
         </select>
       </div>
-      <div className="form-group" id={'field-hidden'} hidden>
+      <div className="form-group form-description" id={'field-hidden'} hidden>
         <label htmlFor="career">Carrera *</label>
         <select className="form-control" id="career" name="career" required>
           <option defaultValue="Seleccione" disabled selected>Seleccione una carrera</option>
