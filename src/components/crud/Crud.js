@@ -19,7 +19,7 @@ const Crud = (props) => {
 
     inputs.forEach(input => {
       if (input.type !== 'file') {
-        dataL[input.name] = input.name !== 'name' && input.name !== 'email' && input.name !== 'lastName' ? input.value.trim().charAt(0).toUpperCase() + input.value.slice(1).toLowerCase() : input.value.trim()
+        dataL[input.name] = input.name !== 'name' && input.name !== 'email' && input.name !== 'lastName' && input.type !== 'password' ? input.value.trim().charAt(0).toUpperCase() + input.value.slice(1).toLowerCase() : input.value.trim()
       } else {
         dataL[input.name] = input.files[0]
       }
@@ -137,7 +137,7 @@ const Crud = (props) => {
     keys.forEach((key, i) => {
       if (key !== '__v') {
         inputs.forEach(input => {
-          if (input.type!== 'file' && input.type !== 'date' && input.name === key && input.name !== 'password') {
+          if (input.type !== 'file' && input.type !== 'date' && input.name === key && input.name !== 'password') {
             input.value = values[i]
           } else if (input.type === 'date' && input.name === key) {
             input.value = values[i].slice(0, 10)
@@ -147,6 +147,8 @@ const Crud = (props) => {
           if (select.name === key) {
             if (select.name === 'career') {
               select.value = values[i]._id
+            } else if (select.name === 'role') {
+              document.getElementById('field-hidden').style.display = values[i] === 'ADMIN' ? 'none' : 'block'
             } else {
               select.value = values[i]
             }
@@ -287,7 +289,7 @@ const Crud = (props) => {
                                 return (
                                   <td key={column.key}>{<a onClick={() => {
                                     setId(data._id)
-                                  }} href={props.object === 'Forum' ? `forum/${id}` : props.object==='Work' ? `work/${id}` : `news/${id}`}>{data[column.key]}</a>}</td>
+                                  }} href={props.object === 'Forum' ? `forum/${id}` : props.object === 'Work' ? `work/${id}` : `news/${id}`}>{data[column.key]}</a>}</td>
                                 )
                               } else {
                                 if (column.type === 'date') {
@@ -318,13 +320,13 @@ const Crud = (props) => {
                                     }
                                   } else if (column.key === 'description') {
                                     return (
-                                      <td key={column.key} className={props.object==='Work' ? 'desc d-3' : 'desc'}>
+                                      <td key={column.key} className={props.object === 'Work' ? 'desc d-3' : 'desc'}>
                                         <div className="description-container">
                                           {
                                             props.object === 'Forum' && data.image !== 'undefined' ? <img src={data.image} alt="" /> : null
                                           }
 
-                                          <p className={props.object==='Work' ? 'p-description p-3' : 'p-description'}>
+                                          <p className={props.object === 'Work' ? 'p-description p-3' : 'p-description'}>
                                             {
                                               data[column.key] && data[column.key].split('\n').map((item, index) => (
                                                 <p key={index}>{item}</p>
@@ -366,7 +368,7 @@ const Crud = (props) => {
                                       })
                                     })
                                 }}></i>
-                        
+
                                 <i className="fa-solid fa-trash fa-lg" onClick={() => {
                                   Swal.fire({
                                     title: '¿Estas seguro que deseas eliminar el registro?',
@@ -405,20 +407,17 @@ const Crud = (props) => {
                                 }}></i>
                               </td> : null
                           }
-
-
-              </tr>
-              )
+                        </tr>
+                      )
                     })
                   }
-
-            </tbody>
+                </tbody>
               </table>
-    </div>
+            </div>
             :
-<div className="data-body">
-  <h2>No hay registros</h2>
-</div>
+            <div className="data-body">
+              <h2>No hay registros</h2>
+            </div>
 
         }
 
