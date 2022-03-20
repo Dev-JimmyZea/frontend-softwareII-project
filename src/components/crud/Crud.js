@@ -149,6 +149,7 @@ const Crud = (props) => {
               select.value = values[i]._id
             } else if (select.name === 'role') {
               document.getElementById('field-hidden').style.display = values[i] === 'ADMIN' ? 'none' : 'block'
+              select.value = values[i]
             } else {
               select.value = values[i]
             }

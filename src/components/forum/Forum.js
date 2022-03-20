@@ -196,7 +196,7 @@ const Forum = () => {
                             : null
                         }
                         {
-                          JSON.parse(localStorage.getItem('user'))._id !== comment.user._id ?
+                          JSON.parse(localStorage.getItem('user'))._id !== comment.user._id && comment.user.role === 'STUDENT'?
                             <button onClick={() => {
                               setIdUserResponse(comment.user._id)
                               openModal()
