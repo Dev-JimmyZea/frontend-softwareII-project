@@ -47,7 +47,7 @@ const Item = (props) => {
                                     props.user.role === 'STUDENT' ?
                                         <>
                                             {
-                                                props.applicants && props.applicants.length !== 0 && props.applicants.includes(props.user._id) ?
+                                                props.applicants && props.applicants.length !== 0 && props.applicants.find(item => item._id === props.user._id) ?
                                                     <button onClick={() => props.apply(props.user._id, true)}>Cancelar</button>
                                                     :
                                                     <button onClick={() => props.apply(props.user._id)}>Aplicar</button>
