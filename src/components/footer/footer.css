@@ -2,13 +2,71 @@
     border-top: 3rem solid #e5e5e5;
     background: url(../../resources/img/footer_sitio1.jpg) no-repeat center center;
     background-size: cover;
-    text-align: center;
     margin: -0.5rem;
     margin-top: 0;
     margin-bottom: -1rem;
     color: #fff;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 3rem;
+    font-size: 0.9rem;
 }
 
-.footer-menu li a{
+.footer-container a{
     color: #fff;
+    text-decoration: none;
+}
+
+.footer-container a, span, strong{
+    /* border: 1px solid red; */
+    padding-bottom: 0.2rem;
+}
+
+.footer-container .display-block {
+    display: block;
+    padding-bottom: 0.5rem;
+}
+
+.footer-container .display-block-one {
+    display: block;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.footer-container .footer-container-second-column {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-container .footer-container-last-column {
+    grid-column: 1 / 4;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.container-icons div ul{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.container-icons div ul li {
+    list-style: none;
+    margin-right: 0.5rem;
+}
+
+.container-icons div ul li div{
+    color: rgb(173, 169, 169);
+    background-color: #fff;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
