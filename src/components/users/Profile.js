@@ -45,7 +45,14 @@ const NewsAndWork = (props) => {
 
                         </table>
                         :
-                        <h2>No tienes foros</h2>
+                        <h2>
+                            {
+                                props.object === 'forum' ?
+                                    'No tienes ningún foro creado'
+                                    :
+                                    'No has aplicado a ningún trabajo'
+                            }
+                        </h2>
                 }
 
             </div>
@@ -151,9 +158,6 @@ const Profile = () => {
                             <div className={'profile-info'}>
                                 <div className={'profile-title-info'}>
                                     <h2>Datos personales</h2>
-                                </div>
-                                <div className={'profile-button'}>
-                                    <button>Editar datos personales</button>
                                 </div>
                                 <div className={'profile-info-user'}>
 
