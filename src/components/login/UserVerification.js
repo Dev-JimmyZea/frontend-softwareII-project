@@ -18,7 +18,7 @@ const ValidateUser = ({ children, role }) => {
 
             if (user) {
                 const userRole = JSON.parse(user).role
-                if (!expired && (userRole === role || role === 'ALL')) {
+                if (!expired && (userRole === role || role === 'ALL' || ((userRole === 'SUPERADMIN' || userRole === 'ADMIN') && role === 'ADMIN-AND-SUPERADMIN'))) {
                     setShowChild(true)
                 } else if (!expired && userRole !== role) {
                     setTimeout(() => {
