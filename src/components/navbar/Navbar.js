@@ -54,6 +54,15 @@ const Navbar = () => {
                                     <a href={'/superadmin-users'}>Usuarios</a>
                                 </li>
                                 <li className={'navbar-item'}>
+                                    <a href={'/admin-works'}>Trabajos</a>
+                                </li>
+                                <li className={'navbar-item'}>
+                                    <a href={'/admin-news'}>Noticias</a>
+                                </li>
+                                <li className={'navbar-item'}>
+                                            <a href={`/profile/${user._id}`}><i className="fa-solid fa-user"></i></a>
+                                        </li>
+                                <li className={'navbar-item'}>
                                     <button onClick={closeSession}><i className="fa-solid fa-arrow-right-from-bracket"></i></button>
                                 </li>
 
@@ -70,6 +79,9 @@ const Navbar = () => {
                                         <a href={'/admin-news'}>Noticias</a>
                                     </li>
                                     <li className={'navbar-item'}>
+                                            <a href={`/profile/${user._id}`}><i className="fa-solid fa-user"></i></a>
+                                        </li>
+                                    <li className={'navbar-item'}>
                                         <button onClick={closeSession}><i className="fa-solid fa-arrow-right-from-bracket"></i></button>
                                     </li>
                                 </>
@@ -79,7 +91,7 @@ const Navbar = () => {
                                             <a href={'/'}>Bienvenid@ Estudiante {user.name} {user.lastName}</a>
                                         </li>
                                         <li className={'navbar-item'}>
-                                            <a href={'/student-profile'}><i className="fa-solid fa-user"></i></a>
+                                            <a href={`/profile/${user._id}`}><i className="fa-solid fa-user"></i></a>
                                         </li>
                                         <li className={'navbar-item'}>
                                             <a href={'/student-notification'}><i className="fa-solid fa-bell"></i></a>
