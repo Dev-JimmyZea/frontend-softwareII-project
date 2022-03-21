@@ -9,6 +9,7 @@ const Forum = () => {
   const [forum, setForum] = useState([])
   const [open, setOpen] = useState(false)
   const [idUserResponse, setIdUserResponse] = useState(null)
+  const [isResponse, setIsResponse] = useState(false)
 
   const openModal = () => {
     setOpen(true)
@@ -62,7 +63,7 @@ const Forum = () => {
       text: e.target.comment.value,
       user: JSON.parse(localStorage.getItem('user'))._id,
       forum: window.location.pathname.split('/')[2],
-      response_to: idUserResponse
+      response_to: isResponse ? idUserResponse : forum.users[0]
     }
 
     const res = await getData(`${process.env.REACT_APP_URL_BACKEND}comment`, 'POST', data)
@@ -137,6 +138,7 @@ const Forum = () => {
             <div className="card-body">
               <div className="card-body-button-new">
                 <button onClick={() => {
+                  setIsResponse(false)
                   openModal()
                 }}>Nuevo comentario</button>
               </div>
@@ -198,6 +200,7 @@ const Forum = () => {
                         {
                           JSON.parse(localStorage.getItem('user'))._id !== comment.user._id && comment.user.role === 'STUDENT'?
                             <button onClick={() => {
+                              setIsResponse(true)
                               setIdUserResponse(comment.user._id)
                               openModal()
                             }}>Responder</button>
