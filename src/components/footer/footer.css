@@ -20,7 +20,6 @@
 }
 
 .footer-container a, span, strong{
-    /* border: 1px solid red; */
     padding-bottom: 0.2rem;
 }
 
@@ -29,12 +28,22 @@
     padding-bottom: 0.5rem;
 }
 
+.footer-container .mayus{
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 0rem;
+}
+
 .footer-container .display-block-one {
     display: block;
 }
 
 .mt-2 {
     margin-top: 2rem;
+}
+
+.footer-container .footer-container-first-column {
+    grid-column: 1 / 2;
 }
 
 .footer-container .footer-container-second-column {
@@ -51,8 +60,8 @@
 .container-icons div ul{
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .container-icons div ul li {
@@ -61,10 +70,10 @@
 }
 
 .container-icons div ul li div{
-    color: rgb(173, 169, 169);
+    color: rgb(112, 111, 111);
     background-color: #fff;
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.7rem;
+    height: 2.7rem;
     border-radius: 50%;
     display: flex;
     justify-content: center;

@@ -8,11 +8,12 @@ const Footer = () => {
                     <div className="body default">
                         <div className="text">
                             <p>
-                                <strong className="display-block">
+                                <strong className="display-block mayus">
                                     UNIVERSIDAD PEDAGÓGICA Y TECNOLÓGICA DE COLOMBIA
                                 </strong>
+                                Sede Central Tunja–Boyacá–Colombia
                                 <span className="display-block-one">
-                                    Sede Central Tunja–Boyacá–Colombia Avenida Central del Norte 39-115
+                                    Avenida Central del Norte 39-115
                                 </span>
 
                                 <strong>PBX:</strong> (57+8) 7405626
@@ -34,11 +35,13 @@ const Footer = () => {
                                     rel="noreferrer"
                                 >
                                     <span className="display-block-one">
-
                                         Horario de atención y servicio telefónico
                                     </span>
                                 </a>
-                                Lunes a viernes de 8:00 a.m. a 12:00 m y 2:00 p.m a 6:00 p.m.
+                                <span className="display-block-one">
+                                    Lunes a viernes de
+                                </span>
+                                8:00 a.m. a 12:00 m y 2:00 p.m a 6:00 p.m.
                                 <a
                                     className="enlaceAzul"
                                     title="Transparencia y Acceso a la Información Pública"
@@ -74,7 +77,7 @@ const Footer = () => {
                     <div className="body default">
                         <div className="text">
                             <p>
-                                <strong className="display-block">INSTITUCIONAL</strong>
+                                <strong className="display-block mayus">INSTITUCIONAL</strong>
                             </p>
                             <p>
                                 <a
@@ -211,7 +214,7 @@ const Footer = () => {
                         <div className="text">
                             <p> </p>
                             <p>
-                                <strong className="display-block">
+                                <strong className="display-block-one">
                                     Institución de Educación Superior sujeta a inspección y
                                     vigilancia por el Ministerio de Educación Nacional
                                 </strong>
