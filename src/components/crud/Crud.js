@@ -49,13 +49,13 @@ const Crud = (props) => {
     }
     const headers = {}
     let bodyS = null
-    if (props.object !== 'Forum' && props.object !== 'Work' && props.object !== 'News') {
+    if (data && data.image) {
+      headers['x-access-token'] = localStorage.getItem('token')
+      bodyS = formData
+    } else {
       headers['Content-type'] = 'application/json'
       headers['x-access-token'] = localStorage.getItem('token')
       bodyS = JSON.stringify(data)
-    } else {
-      headers['x-access-token'] = localStorage.getItem('token')
-      bodyS = formData
     }
 
     const config = {
@@ -324,7 +324,7 @@ const Crud = (props) => {
                                       <td key={column.key} className={props.object === 'Work' ? 'desc d-3' : 'desc'}>
                                         <div className="description-container">
                                           {
-                                            props.object === 'Forum' && data.image !== 'undefined' ? <img src={data.image} alt="" /> : null
+                                            props.object === 'Forum' && data.image ? <img src={data.image} alt="" /> : null
                                           }
 
                                           <p className={props.object === 'Work' ? 'p-description p-3' : 'p-description'}>

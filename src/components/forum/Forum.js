@@ -123,7 +123,7 @@ const Forum = () => {
         <div className="forum-body">
           <div className="forum-body-content">
             {
-              forum.image !== 'undefined' && <img src={forum.image} alt="img-forum" />
+              forum.image && <img src={forum.image} alt="img-forum" />
             }
             {
               forum && forum.description && forum.description.split('\n').map((text, index) => (

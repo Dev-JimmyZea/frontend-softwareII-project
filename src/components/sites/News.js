@@ -7,7 +7,7 @@ import ValidateUser from "../login/UserVerification"
 const News = () => {
     return (
         <>
-            <ValidateUser role={'ADMIN'}>
+            <ValidateUser role={'ADMIN-AND-SUPERADMIN'}>
                 <Navbar />
                 <NewsComponent />
                 <Footer />
