@@ -14,7 +14,6 @@
     "sweetalert2": "11.6.15"
   },
   "scripts": {
-    "co": "sui-mono commit",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
