@@ -14,17 +14,12 @@
     "sweetalert2": "11.6.15"
   },
   "scripts": {
-    "start": "react-scripts start --openssl-legacy-provider",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+
   "browserslist": {
     "production": [
       ">0.2%",
